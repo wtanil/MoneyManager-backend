@@ -5,30 +5,24 @@ namespace App\Contracts;
 use App\User;
 use Illuminate\Http\Request;
 
-interface RecordRepositoryInterface {
+interface RecordInterface {
 
 	/**
 	*   Get all records
 	*
+	*	@param	int $userId
 	*   @return \Illuminate\Database\Eloquent\Collection
 	*/
-	function all();
+	function all($userId);
 
 	/**
 	*	Get a record by record ID
 	*
-	*	@param int $id
+	*	@param  int  $userId
+    *	@param  int  $recordId
 	*	@return App\Record
 	*/
-	function forId($id);
-
-	/**
-	*	Get records for a given user ID
-	*
-	*	@param int $id
-	*   @return \Illuminate\Database\Eloquent\Collection
-	*/
-	function forUserId($id);
+	function forId($userId, $recordId);
 
 	/**
 	*	Store a new record
@@ -47,15 +41,16 @@ interface RecordRepositoryInterface {
 	*	@param int $userId
 	*	@return App\Record
 	*/
-	function updateById(Request $request, $id, $userId);
+	function update(Request $request, $userId, $recordId);
 
 	/**
 	*	Delete a record by record ID
 	*
-	*	@param int $id
+	*	@param int $userId
+	*	@param int $recordId
 	*	@return bool
 	*/
-	function deleteById($id);
+	function delete($userId, $recordId);
 
 
 

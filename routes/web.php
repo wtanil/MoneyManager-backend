@@ -23,3 +23,5 @@ Route::get('/home', 'HomeController@index');
 Route::get('/test', function () {
     return view('welcome');
 });
+
+Route::get('/v1/records', 'RecordApiController@index');
