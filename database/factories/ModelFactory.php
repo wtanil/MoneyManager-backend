@@ -21,3 +21,20 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Record::class, function (Faker\Generator $faker) {
+
+    return [
+        'user_id' => 1,
+        'title' => $faker->sentence(5, true),
+        'currency' => $faker->currencyCode,
+        'note' => $faker->paragraph(3, true),
+        'amount' => $faker->randomFloat(),
+        'is_income' => $faker->boolean(50),
+        'id_loan' => $faker->boolean(50),
+        'date' => $faker->dateTime('2016-12-16 12:07:55'),
+        'update_date' => $faker->dateTime('2016-12-16 12:07:55'),
+        'created_at' => null,
+        'updated_at' => null
+    ];
+});
