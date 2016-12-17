@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Http\Request;
 
 use App\Repositories\RecordRepository;
 
@@ -18,8 +19,6 @@ class RecordRepositoryTest extends TestCase {
         	Artisan::call('migrate');
         // 	static::$setUpFlag = true;
         // }
-        
-
     }
 
     // public function tearDown() {
@@ -28,9 +27,8 @@ class RecordRepositoryTest extends TestCase {
     // }
 
     /**
-     * A basic test example.
-     *
-     * @return void
+     *	@group recordrepository
+     * 	@return void
      */
     public function test_get_user_not_found() {
     	$recordRepo = new RecordRepository();
@@ -40,9 +38,8 @@ class RecordRepositoryTest extends TestCase {
     }
     
     /**
-     * A basic test example.
-     *
-     * @return void
+     *	@group recordrepository
+     * 	@return void
      */
     public function test_get_user_found() {
     	$recordRepo = new RecordRepository();
@@ -52,6 +49,10 @@ class RecordRepositoryTest extends TestCase {
     	$this->assertEquals($factoryUser->id, $dbUser->id);
     }
 
+    /**
+     *	@group recordrepository
+     * 	@return void
+     */
     public function test_all_not_found() {
     	$recordRepo = new RecordRepository();
     	$factoryUser = factory(App\User::class)->create();
@@ -60,6 +61,10 @@ class RecordRepositoryTest extends TestCase {
     	$this->assertCount(0, $dbRecords);
     }
 
+    /**
+     *	@group recordrepository
+     * 	@return void
+     */
     public function test_all_found() {
     	$recordRepo = new RecordRepository();
     	$factoryUsers = factory(App\User::class, 2)->create();
@@ -74,8 +79,10 @@ class RecordRepositoryTest extends TestCase {
     	$this->assertCount(5, $dbRecordsTwo);
     }
 
-    // function forId($userId, $recordId) {
-
+    /**
+     *	@group recordrepository
+     * 	@return void
+     */
     public function test_for_id_not_found() {
     	$recordRepo = new RecordRepository();
     	$factoryUser = factory(App\User::class)->create();
@@ -84,6 +91,10 @@ class RecordRepositoryTest extends TestCase {
     	$this->assertNull($dbRecord);
     }
 
+    /**
+     *	@group recordrepository
+     * 	@return void
+     */
     public function test_for_id_found() {
     	$recordRepo = new RecordRepository();
     	$factoryUser = factory(App\User::class)->create();
@@ -93,8 +104,4 @@ class RecordRepositoryTest extends TestCase {
 
     	$this->assertEquals($factoryRecord->id, $dbRecord->id);
     }
-
-    
-
-    
 }
