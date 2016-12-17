@@ -14,7 +14,7 @@ class AddUserIdToRecordTable extends Migration
     public function up()
     {
         Schema::table('records', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned()->after('id');
+            $table->integer('user_id')->unsigned()->after('id')->default(0);
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

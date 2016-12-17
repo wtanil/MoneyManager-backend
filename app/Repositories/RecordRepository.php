@@ -25,7 +25,7 @@ class RecordRepository implements RecordInterface {
 	*   Get all records
 	*
 	*	@param	int $userId
-	*   @return \Illuminate\Database\Eloquent\Collection
+	*   @return [App\Record]
 	*/
 	function all($userId) {
 

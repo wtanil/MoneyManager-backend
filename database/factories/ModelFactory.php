@@ -31,7 +31,7 @@ $factory->define(App\Record::class, function (Faker\Generator $faker) {
         'note' => $faker->paragraph(3, true),
         'amount' => $faker->randomFloat(),
         'is_income' => $faker->boolean(50),
-        'id_loan' => $faker->boolean(50),
+        'is_loan' => $faker->boolean(50),
         'date' => $faker->dateTime('2016-12-16 12:07:55'),
         'update_date' => $faker->dateTime('2016-12-16 12:07:55'),
         'created_at' => null,
